@@ -1,0 +1,17 @@
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-subtitle>Create</mat-card-subtitle>
+        <mat-card-title>New Order</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            Do you want to continue on making a <strong>new order</strong>?
+        </p>
+        <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-flat-button color="accent" (click)="dialogRef.close(1)">Ok</button>
+        <button mat-button (click)="dialogRef.close()">Cancel</button>
+    </mat-card-actions>
+</mat-card>
+  

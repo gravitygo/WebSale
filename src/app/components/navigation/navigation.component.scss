@@ -1,0 +1,41 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 305px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.menu-button{
+  margin-left: auto;
+}
+
+.input-number{
+  display: flex;
+  input{
+    flex-grow: 1;
+  }
+}
+
+.input-controller{
+  min-width: 0;
+  aspect-ratio: 1/1;
+}
+
+.product-item{
+  padding: 4px 12px;
+}
+
+.action-buttons{
+  margin-left: auto
+}

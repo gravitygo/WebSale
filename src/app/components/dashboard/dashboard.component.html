@@ -1,0 +1,13 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Products</h1>
+  <app-search-bar (products)="setProducts($event)"></app-search-bar>
+  <div class="grid">
+    <div *ngFor="let product of productList" class="card">
+      <app-product
+        [name]="product.product_name"
+        [code]="product.product_code"
+        [productCategory]="product.product_list"
+    ></app-product>
+    </div>
+  </div>
+</div>

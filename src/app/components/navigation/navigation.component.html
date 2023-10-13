@@ -1,0 +1,57 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      position = "end"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Cart</mat-toolbar>
+    <mat-nav-list>
+      <div mat-list-item class="product-item" *ngFor="let product of cartContent | keyvalue">
+        <h4>{{cartContent[product.key].name}}({{cartContent[product.key].product_option.unit_name}})</h4>
+        <div>
+          <label>Amount</label>
+          <div class="input-number">
+            <button mat-button class="input-controller" (click)="decrement(product.key)">-</button>
+            <input type = "number" min="0" [value]="cartContent[product.key].amount" [(ngModel)]="cartContent[product.key].amount">
+            <button mat-button class="input-controller" (click)="increment(product.key)">+</button>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <button 
+        type="button"
+        mat-flat-button
+        color = "primary"
+        [style.width] = "'100%'"
+        *ngIf="cartContent && (cartContent | keyvalue).length"
+        (click)="openDialog(1)">
+        Complete Process
+      </button>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>WebSale</span>
+      <div class="action-buttons">
+        <button  
+          type="button"
+          mat-icon-button
+          class="menu-button"
+          (click)="openDialog(0)">
+          <mat-icon>open_in_new</mat-icon>
+        </button>
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          class="menu-button"
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">shopping_cart</mat-icon>
+        </button>
+      </div>
+      
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

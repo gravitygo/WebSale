@@ -1,0 +1,23 @@
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-subtitle>Product</mat-card-subtitle>
+        <mat-card-title>{{data.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field>
+            <mat-label>Amount</mat-label>
+            <input matInput type = "number" min = "0" [(ngModel)]="data.return.amount" placeholder="0">
+        </mat-form-field>
+        <mat-chip-listbox [(ngModel)]="data.return.product_option" aria-label="product category">
+            <mat-chip-option *ngFor="let product of data.productCategory" [value]="product.product_option">
+              {{ product.product_option.unit_name }}
+            </mat-chip-option>
+          </mat-chip-listbox>          
+        <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-flat-button color="accent" (click)="dialogRef.close(data.return)">Ok</button>
+        <button mat-button (click)="dialogRef.close()">Cancel</button>
+    </mat-card-actions>
+</mat-card>
+  
